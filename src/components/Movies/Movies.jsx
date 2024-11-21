@@ -57,9 +57,7 @@ const NoMoviesResults = () => {
   return (<p className='main__movies-no-results'>No movies results</p>)
 }
 
-const Movies = ({ isFirstRender, movies }) => {
-  if (isFirstRender) return
-
+const Movies = ({ movies }) => {
   return (
     <div className='main__movies'>
       {movies?.length ? <MoviesList movies={movies} /> : <NoMoviesResults />}

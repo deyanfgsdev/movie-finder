@@ -11,6 +11,8 @@ const App = () => {
   const [movies, setMovies] = useState([])
 
   const getMovies = ({ search }) => {
+    console.log('getMovies by => ', search)
+
     const newMovies = moviesResults.Search
 
     setMovies(newMovies)

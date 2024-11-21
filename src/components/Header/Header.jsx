@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import './Header.scss'
 
-const Header = ({ getMovies }) => {
+const Header = ({ enableFirstInput, getMovies }) => {
   const [search, setSearch] = useState('')
+  const isFirstInput = useRef(true)
+
+  useEffect(() => {
+    if (isFirstInput.current) {
+      isFirstInput.current = false
+
+      return
+    }
+
+    console.log('search =>', search)
+  }, [search])
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
