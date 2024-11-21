@@ -2,11 +2,12 @@ import { useState } from 'react'
 
 import './Header.scss'
 
-const Header = () => {
+const Header = ({ getMovies }) => {
   const [search, setSearch] = useState('')
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
+    getMovies({ search })
   }
 
   const handleSearchChange = (event) => {
