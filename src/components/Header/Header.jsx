@@ -3,7 +3,7 @@ import useSearch from '../../hooks/useSearch'
 import './Header.scss'
 
 const Header = ({ getMovies }) => {
-  const { search, updateSearch, errorMessage } = useSearch()
+  const { search, updateSearch, formErrorMessage } = useSearch()
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
@@ -27,7 +27,7 @@ const Header = ({ getMovies }) => {
         <input type='text' name='search' value={search} id='search-input' className='form__search-input' placeholder='Batman, Star Wars, Dune...' onChange={handleSearchChange} />
         <button type='submit' className='form__submit-button'>Search</button>
       </form>
-      {errorMessage && <p className='header__form-error-message'>{errorMessage}</p>}
+      {formErrorMessage && <p className='header__form-error-message'>{formErrorMessage}</p>}
     </header>
   )
 }

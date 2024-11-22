@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 
 const useSearch = () => {
   const [search, setSearch] = useState('')
-  const [errorMessage, setErrorMessage] = useState(null)
+  const [formErrorMessage, setFormErrorMessage] = useState(null)
   const isFirstInput = useRef(true)
 
   useEffect(() => {
@@ -14,31 +14,31 @@ const useSearch = () => {
     }
 
     if (!search) {
-      setErrorMessage('Please enter a movie')
+      setFormErrorMessage('Please enter a movie')
 
       return
     }
 
     if (search.match(/^\d+$/)) {
-      setErrorMessage("The search can't be a number")
+      setFormErrorMessage("The search can't be a number")
 
       return
     }
 
     if (search.length < 3) {
-      setErrorMessage('Please enter at least 3 characters')
+      setFormErrorMessage('Please enter at least 3 characters')
 
       return
     }
 
-    setErrorMessage(null)
+    setFormErrorMessage(null)
   }, [search])
 
   const updateSearch = ({ newSearch }) => {
     setSearch(newSearch)
   }
 
-  return { search, updateSearch, errorMessage }
+  return { search, updateSearch, formErrorMessage }
 }
 
 export default useSearch
