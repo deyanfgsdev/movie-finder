@@ -1,40 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import useSearch from '../../hooks/useSearch'
 
 import './Header.scss'
 
 const Header = ({ getMovies }) => {
-  const [search, setSearch] = useState('')
-  const [errorMessage, setErrorMessage] = useState(null)
-  const isFirstInput = useRef(true)
-
-  useEffect(() => {
-    // Prevent the first input validation
-    if (isFirstInput.current) {
-      isFirstInput.current = false
-
-      return
-    }
-
-    if (!search) {
-      setErrorMessage('Please enter a movie')
-
-      return
-    }
-
-    if (search.match(/^\d+$/)) {
-      setErrorMessage("The search can't be a number")
-
-      return
-    }
-
-    if (search.length < 3) {
-      setErrorMessage('Please enter at least 3 characters')
-
-      return
-    }
-
-    setErrorMessage(null)
-  }, [search])
+  const { search, updateSearch, errorMessage } = useSearch()
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
@@ -48,7 +17,7 @@ const Header = ({ getMovies }) => {
     // Prevent search if the input starts with a space
     if (newSearch.startsWith(' ')) return
 
-    setSearch(newSearch)
+    updateSearch({ newSearch })
   }
 
   return (
