@@ -1,6 +1,7 @@
 $grey_primary: #1c1c1c;
 $grey_secondary: #8c8c8c;
 $yellow_primary: #fcc434;
+$red_primary: #e50000;
 
 .header {
   display: flex;
@@ -54,5 +55,11 @@ $yellow_primary: #fcc434;
       border-radius: 8px;
       padding: 8px 16px;
     }
+  }
+  .header__form-error-message {
+    color: $red_primary;
+    font-weight: 700;
+    margin-top: 16px;
+    margin-bottom: 0;
   }
 }
