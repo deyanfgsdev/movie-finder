@@ -6,17 +6,6 @@ const MoviesList = ({ movies }) => {
   const [titleMaxHeight, setTitleMaxHeight] = useState(0)
   const moviesListRef = useRef(null)
 
-  const mappedMovies = movies.map((movie) => {
-    const { imdbID, Title, Year, Poster } = movie
-
-    return {
-      id: imdbID,
-      title: Title,
-      year: Year,
-      poster: Poster
-    }
-  })
-
   useEffect(() => {
     const calculateTitlesMaxHeight = () => {
       const moviesList = moviesListRef.current
@@ -38,7 +27,7 @@ const MoviesList = ({ movies }) => {
 
   return (
     <ul className='movies-list' ref={moviesListRef}>
-      {mappedMovies.map((movie) => {
+      {movies.map((movie) => {
         const { id, title, year, poster } = movie
 
         return (

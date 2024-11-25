@@ -6,7 +6,7 @@ const useMovies = () => {
   const [movies, setMovies] = useState([])
 
   const getMovies = async ({ search }) => {
-    const newMovies = await searchMovies({ search })
+    const { movies: newMovies } = await searchMovies({ search })
     setMovies(newMovies)
   }
 
