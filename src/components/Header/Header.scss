@@ -62,4 +62,46 @@ $red_primary: #e50000;
     margin-top: 16px;
     margin-bottom: 0;
   }
+  .sort-movies-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    .sort-movies-wrapper__text {
+      color: $yellow_primary;
+      margin: 0;
+    }
+    .checkbox-wrapper {
+      display: flex;
+      .checkbox-wrapper__checkbox {
+        display: none;
+        &:checked + .checkbox-wrapper__label {
+          &::after {
+            content: "✔";
+            position: absolute;
+            top: 0;
+            left: 5px;
+            font-size: 15px;
+            color: $yellow_primary;
+          }
+        }
+        & + .checkbox-wrapper__label {
+          position: relative;
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          border: 2px solid $yellow_primary;
+          border-radius: 4px;
+          background-color: transparent;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            box-shadow: 0 0 8px 1px $yellow_primary;
+          }
+        }
+      }
+    }
+  }
 }

@@ -35,6 +35,13 @@ const Header = ({ getMovies }) => {
         <button type='submit' className='form__submit-button'>Search</button>
       </form>
       {formErrorMessage && <p className='header__form-error-message'>{formErrorMessage}</p>}
+      <div className='sort-movies-wrapper'>
+        <p className='sort-movies-wrapper__text'>Do you want to sort the movies by title?</p>
+        <div className='checkbox-wrapper'>
+          <input type='checkbox' id='sort-movies' className='checkbox-wrapper__checkbox' />
+          <label htmlFor='sort-movies' className='checkbox-wrapper__label' />
+        </div>
+      </div>
     </header>
   )
 }
