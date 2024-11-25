@@ -1,13 +1,20 @@
+import { useRef } from 'react'
+
 import useSearch from '../../hooks/useSearch'
 
 import './Header.scss'
 
 const Header = ({ getMovies }) => {
   const { search, updateSearch, formErrorMessage } = useSearch()
+  const prevSearch = useRef(search)
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
 
+    // Prevent the same search from being done twice in a row
+    if (prevSearch.current === search) return
+
+    prevSearch.current = search
     getMovies({ search })
   }
 
