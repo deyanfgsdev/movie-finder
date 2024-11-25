@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import './Movies.scss'
 
 const MoviesList = ({ movies }) => {
-  const [titleHeight, setTitleHeight] = useState()
+  const [titleMaxHeight, setTitleMaxHeight] = useState(0)
   const moviesListRef = useRef(null)
 
   const mappedMovies = movies.map((movie) => {
@@ -30,8 +30,10 @@ const MoviesList = ({ movies }) => {
       return Math.max(...titlesHeights)
     }
 
-    const titlesNewMaxHeight = calculateTitlesMaxHeight()
-    setTitleHeight(`${titlesNewMaxHeight}px`)
+    if (moviesListRef.current) {
+      const titleNewMaxHeight = calculateTitlesMaxHeight()
+      setTitleMaxHeight(`${titleNewMaxHeight}px`)
+    }
   }, [movies])
 
   return (
@@ -43,7 +45,7 @@ const MoviesList = ({ movies }) => {
           <li key={id} className='movie'>
             <img src={poster} alt={title} className='movie__poster' />
             <div className='movie__info'>
-              <h3 className='movie__title' style={{ height: titleHeight || 'auto' }}>{title}</h3>
+              <h3 className='movie__title' style={{ height: titleMaxHeight > 0 ? `${titleMaxHeight}px` : 'auto' }}>{title}</h3>
               <p className='movie__year'>Year: {year}</p>
             </div>
           </li>
