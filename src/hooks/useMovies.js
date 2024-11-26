@@ -10,9 +10,13 @@ const useMovies = ({ sortMovies }) => {
     // Prevent the same search from being done twice in a row
     if (prevSearch.current === search) return
 
-    prevSearch.current = search
-    const newMovies = await searchMovies({ search })
-    setMovies(newMovies)
+    try {
+      prevSearch.current = search
+      const newMovies = await searchMovies({ search })
+      setMovies(newMovies)
+    } catch (error) {
+      console.error(error.message)
+    }
   }, [])
 
   const sortedMovies = useMemo(() => {
