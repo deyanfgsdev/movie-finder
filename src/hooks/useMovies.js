@@ -5,10 +5,12 @@ import { searchMovies } from '../services/movies'
 const useMovies = ({ sortMovies }) => {
   const [movies, setMovies] = useState([])
 
-  const getMovies = async ({ search }) => {
-    const newMovies = await searchMovies({ search })
-    setMovies(newMovies)
-  }
+  const getMovies = useMemo(() => {
+    return async ({ search }) => {
+      const newMovies = await searchMovies({ search })
+      setMovies(newMovies)
+    }
+  }, [])
 
   const sortedMovies = useMemo(() => {
     if (!movies) return
