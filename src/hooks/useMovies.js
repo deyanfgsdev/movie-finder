@@ -1,15 +1,13 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 
 import { searchMovies } from '../services/movies'
 
 const useMovies = ({ sortMovies }) => {
   const [movies, setMovies] = useState([])
 
-  const getMovies = useMemo(() => {
-    return async ({ search }) => {
-      const newMovies = await searchMovies({ search })
-      setMovies(newMovies)
-    }
+  const getMovies = useCallback(async ({ search }) => {
+    const newMovies = await searchMovies({ search })
+    setMovies(newMovies)
   }, [])
 
   const sortedMovies = useMemo(() => {
