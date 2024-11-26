@@ -1,12 +1,13 @@
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 
 import useSearch from '../../hooks/useSearch'
 
 import './Header.scss'
 
-const Header = ({ getMovies }) => {
+const Header = ({ getMovies, checkSortMovies }) => {
   const { search, updateSearch, formErrorMessage } = useSearch()
   const prevSearch = useRef(search)
+  const [sort, setSort] = useState(false)
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
@@ -27,6 +28,11 @@ const Header = ({ getMovies }) => {
     updateSearch({ newSearch })
   }
 
+  const handleSortMoviesChange = () => {
+    setSort(!sort)
+    checkSortMovies({ newSortMovies: !sort })
+  }
+
   return (
     <header className='header'>
       <h1 className='header__title'>Movie Finder</h1>
@@ -38,7 +44,7 @@ const Header = ({ getMovies }) => {
       <div className='sort-movies-wrapper'>
         <p className='sort-movies-wrapper__text'>Do you want to sort the movies by title?</p>
         <div className='checkbox-wrapper'>
-          <input type='checkbox' id='sort-movies' className='checkbox-wrapper__checkbox' />
+          <input type='checkbox' id='sort-movies' className='checkbox-wrapper__checkbox' checked={sort} onChange={handleSortMoviesChange} />
           <label htmlFor='sort-movies' className='checkbox-wrapper__label' />
         </div>
       </div>
