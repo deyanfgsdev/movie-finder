@@ -2,6 +2,8 @@ const OMDB_API_URL_PREFIX = 'http://www.omdbapi.com/?apikey='
 const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 export const searchMovies = ({ search }) => {
+  if (search === '') return null
+
   const REQUEST_URL = `${OMDB_API_URL_PREFIX}${OMDB_API_KEY}&s=${search}`
 
   return fetch(REQUEST_URL)
@@ -12,22 +14,18 @@ export const searchMovies = ({ search }) => {
     }).then((data) => {
       const { Search: movies } = data
 
-      if (movies?.length) {
-        const mappedMovies = movies.map((movie) => {
-          const { imdbID, Title, Year, Poster } = movie
+      const mappedMovies = movies?.map((movie) => {
+        const { imdbID, Title, Year, Poster } = movie
 
-          return {
-            id: imdbID,
-            title: Title,
-            year: Year,
-            poster: Poster
-          }
-        })
+        return {
+          id: imdbID,
+          title: Title,
+          year: Year,
+          poster: Poster
+        }
+      })
 
-        return { movies: mappedMovies }
-      }
-
-      return { movies: [] }
+      return mappedMovies
     }).catch((error) => {
       console.error(error.message)
     })
