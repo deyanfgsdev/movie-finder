@@ -1,11 +1,16 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useRef, useMemo, useCallback } from 'react'
 
 import { searchMovies } from '../services/movies'
 
 const useMovies = ({ sortMovies }) => {
   const [movies, setMovies] = useState([])
+  const prevSearch = useRef('')
 
   const getMovies = useCallback(async ({ search }) => {
+    // Prevent the same search from being done twice in a row
+    if (prevSearch.current === search) return
+
+    prevSearch.current = search
     const newMovies = await searchMovies({ search })
     setMovies(newMovies)
   }, [])
