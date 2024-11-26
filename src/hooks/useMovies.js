@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 
 import { searchMovies } from '../services/movies'
 
@@ -10,7 +10,11 @@ const useMovies = ({ sortMovies }) => {
     setMovies(newMovies)
   }
 
-  const sortedMovies = sortMovies ? [...movies].sort((a, b) => a.title.localeCompare(b.title)) : movies
+  const sortedMovies = useMemo(() => {
+    if (!movies) return
+
+    return sortMovies ? [...movies].sort((a, b) => a.title.localeCompare(b.title)) : movies
+  }, [sortMovies, movies])
 
   return { movies: sortedMovies, getMovies }
 }
