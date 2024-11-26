@@ -26,6 +26,7 @@ const Header = ({ getMovies, checkSortMovies }) => {
     if (newSearch.startsWith(' ')) return
 
     updateSearch({ newSearch })
+    getMovies({ search: newSearch })
   }
 
   const handleSortMoviesChange = () => {
