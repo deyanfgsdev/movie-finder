@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useCallback } from 'react'
 import debounce from 'just-debounce-it'
 
 import useSearch from '../../hooks/useSearch'
@@ -9,11 +9,10 @@ const Header = ({ getMovies, checkSortMovies }) => {
   const { search, updateSearch, formErrorMessage } = useSearch()
   const [sort, setSort] = useState(false)
 
-  const debouncedGetMovies = useMemo(() => {
-    return debounce((search) => {
-      getMovies({ search })
-    }, 300)
-  }, [])
+  const debouncedGetMovies = useCallback(debounce((search) => {
+    getMovies({ search })
+  }, 300)
+  , [])
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
