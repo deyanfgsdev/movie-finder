@@ -33,9 +33,9 @@ const MoviesList = ({ movies }) => {
         return (
           <li key={id} className='movie'>
             <img src={poster} alt={title} className='movie__poster' />
-            <div className='movie__info'>
-              <h3 className='movie__title' style={{ height: titleMaxHeight > 0 ? `${titleMaxHeight}px` : 'auto' }}>{title}</h3>
-              <p className='movie__year'>Year: {year}</p>
+            <div className='movie-info'>
+              <h3 className='movie-info__title' style={{ height: titleMaxHeight > 0 ? `${titleMaxHeight}px` : 'auto' }}>{title}</h3>
+              <p className='movie-info__year'>Year: {year}</p>
             </div>
           </li>
         )
