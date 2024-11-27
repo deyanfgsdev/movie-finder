@@ -9,7 +9,7 @@ import useMovies from './hooks/useMovies'
 
 const App = () => {
   const [sortMovies, setSortMovies] = useState(false)
-  const { movies, getMovies } = useMovies({ sortMovies })
+  const { movies, getMovies, isLoading } = useMovies({ sortMovies })
 
   const checkSortMovies = ({ newSortMovies }) => {
     setSortMovies(newSortMovies)
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className='movie-finder-app'>
       <Header getMovies={getMovies} checkSortMovies={checkSortMovies} />
-      <Main movies={movies} />
+      <Main movies={movies} isLoading={isLoading} />
     </div>
   )
 }

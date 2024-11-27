@@ -3,6 +3,7 @@ import { useState, useRef, useMemo, useCallback } from 'react'
 import { searchMovies } from '../services/movies'
 
 const useMovies = ({ sortMovies }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const [movies, setMovies] = useState([])
   const prevSearch = useRef('')
 
@@ -11,11 +12,14 @@ const useMovies = ({ sortMovies }) => {
     if (prevSearch.current === search) return
 
     try {
+      setIsLoading(true)
       prevSearch.current = search
       const newMovies = await searchMovies({ search })
       setMovies(newMovies)
     } catch (error) {
       console.error(error.message)
+    } finally {
+      setIsLoading(false)
     }
   }, [])
 
@@ -25,7 +29,7 @@ const useMovies = ({ sortMovies }) => {
     return sortMovies ? [...movies].sort((a, b) => a.title.localeCompare(b.title)) : movies
   }, [sortMovies, movies])
 
-  return { movies: sortedMovies, getMovies }
+  return { movies: sortedMovies, getMovies, isLoading }
 }
 
 export default useMovies

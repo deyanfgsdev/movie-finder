@@ -1,10 +1,11 @@
 import { useRef } from 'react'
 
+import Spinner from '../Spinner/Spinner'
 import Movies from '../Movies/Movies'
 
 import './Main.scss'
 
-const Main = ({ movies }) => {
+const Main = ({ movies, isLoading }) => {
   const isFirstRender = useRef(true)
 
   if (isFirstRender.current) {
@@ -15,7 +16,7 @@ const Main = ({ movies }) => {
 
   return (
     <main className='main'>
-      <Movies movies={movies} />
+      {isLoading ? <Spinner /> : <Movies movies={movies} />}
     </main>
   )
 }
