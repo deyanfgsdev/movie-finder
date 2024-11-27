@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import debounce from 'just-debounce-it'
 
 import useSearch from '../../hooks/useSearch'
 
@@ -8,10 +9,14 @@ const Header = ({ getMovies, checkSortMovies }) => {
   const { search, updateSearch, formErrorMessage } = useSearch()
   const [sort, setSort] = useState(false)
 
+  const debouncedGetMovies = debounce((search) => {
+    getMovies({ search })
+  }, 300)
+
   const handleFormSubmit = (event) => {
     event.preventDefault()
 
-    getMovies({ search })
+    debouncedGetMovies(search)
   }
 
   const handleSearchChange = (event) => {
@@ -21,7 +26,7 @@ const Header = ({ getMovies, checkSortMovies }) => {
     if (newSearch.startsWith(' ')) return
 
     updateSearch({ newSearch })
-    getMovies({ search: newSearch })
+    debouncedGetMovies(newSearch)
   }
 
   const handleSortMoviesChange = () => {
