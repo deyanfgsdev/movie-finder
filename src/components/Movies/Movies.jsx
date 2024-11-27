@@ -11,7 +11,7 @@ const MoviesList = ({ movies }) => {
       const moviesList = moviesListRef.current
       const moviesItems = [...moviesList.querySelectorAll('.movie')]
       const titlesHeights = moviesItems.map((movieElem) => {
-        const titleElem = movieElem.querySelector('.movie__title')
+        const titleElem = movieElem.querySelector('.movie-info__title')
         const { offsetHeight } = titleElem
         return offsetHeight
       })
