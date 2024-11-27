@@ -21,23 +21,23 @@ $yellow_primary: #fcc434;
           object-position: center;
         }
       }
-      .movie__info {
+      .movie-info {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 8px;
         padding: 16px;
-        .movie__title,
-        .movie__year {
+        .movie-info__title,
+        .movie-info__year {
           text-align: center;
           margin: 0;
         }
-        .movie__title {
+        .movie-info__title {
           font-size: 24px;
           font-weight: 700;
           color: $yellow_primary;
         }
-        .movie__year {
+        .movie-info__year {
           font-size: 20px;
         }
       }
