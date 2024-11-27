@@ -21,7 +21,7 @@ const MoviesList = ({ movies }) => {
 
     if (moviesListRef.current) {
       const titleNewMaxHeight = calculateTitlesMaxHeight()
-      setTitleMaxHeight(`${titleNewMaxHeight}px`)
+      setTitleMaxHeight(titleNewMaxHeight)
     }
   }, [movies])
 
