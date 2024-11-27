@@ -1,4 +1,4 @@
-const OMDB_API_URL_PREFIX = 'http://www.omdbapi.com/?apikey='
+const OMDB_API_URL_PREFIX = 'https://www.omdbapi.com/?apikey='
 const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY
 
 export const searchMovies = ({ search }) => {
