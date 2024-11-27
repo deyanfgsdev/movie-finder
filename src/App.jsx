@@ -4,6 +4,7 @@ import './App.scss'
 
 import Header from './components/Header/Header'
 import Main from './components/Main/Main'
+import Footer from './components/Footer/Footer'
 
 import useMovies from './hooks/useMovies'
 
@@ -19,6 +20,7 @@ const App = () => {
     <div className='movie-finder-app'>
       <Header getMovies={getMovies} checkSortMovies={checkSortMovies} />
       <Main movies={movies} isLoading={isLoading} />
+      <Footer />
     </div>
   )
 }
