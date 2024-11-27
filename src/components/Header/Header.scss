@@ -7,6 +7,8 @@ $red_primary: #e50000;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
   .header__title {
     font-size: 32px;
     margin: 0;
