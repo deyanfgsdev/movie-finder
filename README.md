@@ -46,6 +46,13 @@ npm install
 npm run dev
 ```
 
+### About API Key:
+
+When you get your API Key, you must do the following:
+
+- Rename the `.env.example` file to `.env` in the project's root directory.
+- Add your key in the environment variable `VITE_OMDB_API_KEY` => `VITE_OMDB_API_KEY=XXXXXX`
+
 ## Copyright
 
 © 2024 Deyán Fabricio Guacarán Sabogal. All rights reserved.
