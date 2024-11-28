@@ -80,15 +80,10 @@ $red_primary: #e50000;
       .checkbox-wrapper__checkbox {
         display: none;
         &:checked + .checkbox-wrapper__label {
-          &::after {
-            content: "✔";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 21px;
-            font-size: 14px;
-            color: #fcc434;
-            -webkit-text-fill-color: #fcc434;
+          .checkbox-checkmark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
         & + .checkbox-wrapper__label {
@@ -104,6 +99,13 @@ $red_primary: #e50000;
           text-align: center;
           &:hover {
             box-shadow: 0 0 8px 1px $yellow_primary;
+          }
+          .checkbox-checkmark {
+            display: none;
+            svg {
+              width: 21px;
+              height: 21px;
+            }
           }
         }
       }
