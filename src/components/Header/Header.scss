@@ -84,9 +84,11 @@ $red_primary: #e50000;
             content: "✔";
             position: absolute;
             top: 0;
-            left: 5px;
-            font-size: 15px;
-            color: $yellow_primary;
+            left: 0;
+            width: 21px;
+            font-size: 14px;
+            color: #fcc434;
+            -webkit-text-fill-color: #fcc434;
           }
         }
         & + .checkbox-wrapper__label {
@@ -99,6 +101,7 @@ $red_primary: #e50000;
           background-color: transparent;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
+          text-align: center;
           &:hover {
             box-shadow: 0 0 8px 1px $yellow_primary;
           }
