@@ -7,6 +7,7 @@ import './Main.scss'
 
 const Main = ({ movies, isLoading }) => {
   const isFirstRender = useRef(true)
+  const mainClassname = isLoading ? 'main main--loading' : 'main'
 
   if (isFirstRender.current) {
     isFirstRender.current = false
@@ -15,7 +16,7 @@ const Main = ({ movies, isLoading }) => {
   }
 
   return (
-    <main className='main'>
+    <main className={mainClassname}>
       {isLoading ? <Spinner /> : <Movies movies={movies} />}
     </main>
   )

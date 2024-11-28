@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 32px auto 0;
   padding-bottom: 128px;
-  &:not(:has(> .main__movies)) {
+  &.main--loading {
     display: flex;
     justify-content: center;
   }
