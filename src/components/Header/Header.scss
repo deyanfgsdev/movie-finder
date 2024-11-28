@@ -87,7 +87,6 @@ $red_primary: #e50000;
           }
         }
         & + .checkbox-wrapper__label {
-          position: relative;
           display: inline-block;
           width: 25px;
           height: 25px;
@@ -96,7 +95,6 @@ $red_primary: #e50000;
           background-color: transparent;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
-          text-align: center;
           &:hover {
             box-shadow: 0 0 8px 1px $yellow_primary;
           }
