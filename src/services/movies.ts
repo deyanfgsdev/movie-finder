@@ -1,9 +1,14 @@
 import { RequestUrl, OMDBResponse } from './movies.type';
+import { Movie } from '../hooks/useMovies/useMovies.types';
 
 const OMDB_API_URL_PREFIX = 'https://www.omdbapi.com/?apikey=';
 const OMDB_API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-export const searchMovies = ({ search }: { search: string }) => {
+export const searchMovies = ({
+  search,
+}: {
+  search: string;
+}): null | Promise<Movie[] | undefined> => {
   if (search === '') return null;
 
   const REQUEST_URL: RequestUrl = `${OMDB_API_URL_PREFIX}${OMDB_API_KEY}&s=${search}`;
@@ -32,5 +37,7 @@ export const searchMovies = ({ search }: { search: string }) => {
     })
     .catch((error) => {
       console.error(error.message);
+
+      return [];
     });
 };
